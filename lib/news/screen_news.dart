@@ -14,13 +14,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late List<Article> future;
+  late Future<List<Article>> future;
 
   @override
-  void initState() async{
-     future = await getNewsData();
+  void initState() {
+    try{
+      future = getNewsData();
 
-     super.initState();
+      super.initState();
+    }catch(e){
+      throw ("Here's an error: ", e);
+    }
   }
 
 
